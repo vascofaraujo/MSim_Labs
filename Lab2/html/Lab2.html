@@ -1,0 +1,1388 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Lab2</title><meta name="generator" content="MATLAB 9.6"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-04-29"><meta name="DC.source" content="Lab2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">Exerc&iacute;cio 2</a></li><li><a href="#3">Fun&ccedil;&atilde;o generatePulse</a></li><li><a href="#4">Exerc&iacute;cio 3</a></li><li><a href="#5">Fun&ccedil;&atilde;o generateU</a></li><li><a href="#6">Exerc&iacute;cio 7</a></li><li><a href="#8">Sistema de SIMULINK 7</a></li><li><a href="#9">Exerc&iacute;cio 8</a></li><li><a href="#10">Fun&ccedil;&atilde;o blockFun8</a></li><li><a href="#12">Exerc&iacute;cio 9</a></li><li><a href="#14">Sistema de SIMULIK 9</a></li><li><a href="#15">Exerc&iacute;cio 10</a></li><li><a href="#16">Fun&ccedil;&atilde;o blockFun10</a></li><li><a href="#18">Exerc&iacute;cio 11</a></li><li><a href="#20">Sistema de SIMULINK 11</a></li><li><a href="#21">Exerc&iacute;cio 12</a></li><li><a href="#23">Exerc&iacute;cio 13</a></li><li><a href="#24">Sistema de SIMULINK 13</a></li></ul></div><pre class="codeinput"><span class="comment">% LAB 2 - MSIM</span>
+<span class="comment">% Autor: Bernardo Rocha &amp; Vasco Ara&uacute;jo</span>
+<span class="comment">% N&uacute;mero de Aluno: 89867 &amp; 90817</span>
+<span class="comment">% Abril 2020; &Uacute;ltima Revis&atilde;o: 29/04/2020</span>
+</pre><h2 id="2">Exerc&iacute;cio 2</h2><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+t = linspace(-1, 1, 100);
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+beta = 0.1;
+
+pb = generatePulse(t, beta);
+
+plot(t, pb)
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+beta = 0.5;
+
+pb = generatePulse(t, beta);
+
+plot(t, pb)
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+beta = 0.9;
+
+pb = generatePulse(t, beta);
+
+plot(t, pb)
+
+
+ylim([0 1.3])
+xlim([-1 1])
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'Pb(t)'</span>)
+legend(<span class="string">'Beta = 0.1'</span>, <span class="string">'Beta = 0.5'</span>, <span class="string">'Beta = 0.9'</span>)
+title(<span class="string">'Gera&ccedil;&atilde;o do impulso prot&oacute;tipo p_\beta(t)'</span>)
+</pre><img vspace="5" hspace="5" src="Lab2_01.png" alt=""> <h2 id="3">Fun&ccedil;&atilde;o generatePulse</h2><pre class="codeinput">type(<span class="string">'generatePulse.m'</span>);
+</pre><pre class="codeoutput">
+
+
+function [Pb] = generatePulse(t, beta)
+    
+    for i = 1: length(t)
+        if t(i) &lt;= - beta/2 - 0.5                               %1&ordf; sec&ccedil;ao
+            Pb(i) = 0;
+        elseif t(i) &gt; - beta/2 - 0.5 &amp;&amp; t(i) &lt;= -0.5              %2&ordf; sec&ccedil;&atilde;o
+            Pb(i) = (2*(t(i)^2)+2*t(i)+0.5)/(beta^2) + (2*t(i)+1)/beta + 0.5;
+        elseif t(i) &gt; -0.5 &amp;&amp; t(i) &lt; beta/2 - 0.5               %3&ordf; sec&ccedil;&atilde;o
+            Pb(i) = -(2*(t(i)^2)+2*t(i)+0.5)/(beta^2) + (2*t(i)+1)/beta + 0.5;
+        elseif t(i) &gt;= beta/2 - 0.5 &amp;&amp; t(i) &lt;= - beta/2 + 0.5       %4&ordf; sec&ccedil;&atilde;o
+            Pb(i) = 1;
+        elseif t(i) &gt; - beta/2 + 0.5 &amp;&amp; t(i) &lt; 0.5                %5&ordf; sec&ccedil;&atilde;o
+            Pb(i) = (-2*(t(i)^2)+2*t(i)-0.5)/(beta^2) + (-2*t(i)+1)/beta + 0.5;
+        elseif t(i) &gt;= 0.5 &amp;&amp; t(i) &lt; beta/2 + 0.5                %6&ordf; sec&ccedil;&atilde;o
+            Pb(i) = (2*(t(i)^2)-2*t(i)+0.5)/(beta^2) + (-2*t(i)+1)/beta + 0.5;
+        elseif t(i) &gt;= beta/2 + 0.5                           %7&ordf; sec&ccedil;&atilde;o
+            Pb(i) = 0;
+        end
+    end
+end
+       
+
+
+</pre><h2 id="4">Exerc&iacute;cio 3</h2><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+<span class="comment">%declara&ccedil;&atilde;o de vari&aacute;veis</span>
+T = 5;
+alpha = 1;
+U1 = 1;
+U2 = 2;
+n1 = 100;
+n2 = 100;
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+beta = 0.1;
+[ut, t] = generateU(T, alpha, beta, U1, U2, n1, n2);
+plot(t, ut);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+beta = 0.5;
+[ut, t] = generateU(T, alpha, beta, U1, U2, n1, n2);
+plot(t, ut);
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+beta = 0.9;
+[ut, t] = generateU(T, alpha, beta, U1, U2, n1, n2);
+plot(t, ut);
+
+
+ylim([-U1-1 U2+1])
+xlim([0 T])
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'u(t)'</span>)
+legend(<span class="string">'Beta = 0.1'</span>, <span class="string">'Beta = 0.5'</span>, <span class="string">'Beta = 0.9'</span>)
+title(<span class="string">'Gera&ccedil;&aacute;o de u(t) a partir do impulso prot&oacute;tipo p_\beta(t)'</span>)
+</pre><img vspace="5" hspace="5" src="Lab2_02.png" alt=""> <h2 id="5">Fun&ccedil;&atilde;o generateU</h2><pre class="codeinput">type(<span class="string">'generateU.m'</span>);
+</pre><pre class="codeoutput">
+function [ut, t] = generateU(T,alpha,beta,U1,U2,n1,n2)
+T_1 = T/(alpha + 1);
+T_2 = (T_1*alpha);
+miu_1 = T_1/(1 + beta);
+miu_2 = T_2/(1 + beta);
+
+n_total = n1 + (n2-1);
+t = linspace(0, T, n_total);
+
+
+pb1 = generatePulse((t-(T_1/2))/miu_1, beta);
+u1 = -U1*pb1;
+
+pb2 = generatePulse((t-T_1-(T_2/2))/miu_2, beta);
+u2 = U2*pb2;
+
+ut = u1 + u2;
+end
+
+</pre><h2 id="6">Exerc&iacute;cio 7</h2><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+<span class="comment">%inicializar vari&aacute;veis</span>
+b = 0;
+beta = 1;
+n1 = 100;
+n2 = 100;
+
+
+<span class="keyword">for</span> alpha = 0.5:0.5:1.5
+
+    <span class="keyword">if</span> alpha &lt;= 1
+        T = sqrt(2*(1+beta)*(1+alpha)/alpha);
+    <span class="keyword">else</span>
+        T = sqrt(2*(1+beta)*(1+alpha));
+    <span class="keyword">end</span>
+    T1 = T/(1+alpha);
+    U1 = 2*(1+beta)/((T1^2)*(1+alpha));
+    U2 = U1/alpha;
+    [ut, t] = generateU(T,alpha,beta,U1,U2,n1,n2);
+    figure(1);
+    plot(t, ut);
+    hold <span class="string">on</span>;
+    grid <span class="string">on</span>;
+
+    u_entrada.time = t';
+    u_entrada.signals.values = ut';
+    stop_time = T;
+    sim7 = sim(<span class="string">'system7'</span>);
+
+    figure(2);
+    plot(sim7.tout, sim7.y_saida);
+    hold <span class="string">on</span>;
+    grid <span class="string">on</span>;
+
+    figure(3);
+    plot(sim7.tout, sim7.d_y_saida);
+    hold <span class="string">on</span>;
+    grid <span class="string">on</span>;
+
+    <span class="comment">%sistema com b = 0.025</span>
+    b = 0.025;
+    sim7_2 = sim(<span class="string">'system7'</span>);
+
+    figure(4);
+    plot(sim7_2.tout, sim7_2.y_saida);
+    hold <span class="string">on</span>;
+    grid <span class="string">on</span>;
+
+    figure(5);
+    plot(sim7_2.tout, sim7_2.d_y_saida);
+    hold <span class="string">on</span>;
+    grid <span class="string">on</span>;
+
+    <span class="comment">%repor o valor de b</span>
+    b = 0;
+
+
+<span class="keyword">end</span>
+
+
+figure(1)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'u(t)'</span>)
+legend(<span class="string">'alpha = 0.5'</span>, <span class="string">'alpha = 1'</span>, <span class="string">'alpha = 1.5'</span>, <span class="string">'location'</span>, <span class="string">'southeast'</span>);
+
+title(<span class="string">'Sinal de entrada do sistema - u(t)'</span>);
+
+figure(2)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+legend(<span class="string">'alpha = 0.5'</span>, <span class="string">'alpha = 1'</span>, <span class="string">'alpha = 1.5'</span>);
+title(<span class="string">'Evolu&ccedil;&atilde;o da posi&ccedil;&atilde;o do sistema - y(t) com b = 0'</span>)
+
+figure(3)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'dy(t)'</span>)
+legend(<span class="string">'alpha = 0.5'</span>, <span class="string">'alpha = 1'</span>, <span class="string">'alpha = 1.5'</span>, <span class="string">'location'</span>, <span class="string">'southeast'</span>);
+title(<span class="string">'Evolu&ccedil;&atilde;o da velocidade do sistema - dy(t) com b = 0'</span>)
+
+figure(4)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+legend(<span class="string">'alpha = 0.5'</span>, <span class="string">'alpha = 1'</span>, <span class="string">'alpha = 1.5'</span>);
+title(<span class="string">'Evolu&ccedil;&atilde;o da posi&ccedil;&atilde;o do sistema - y(t) com b = 0.025'</span>);
+
+figure(5)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'dy(t)'</span>)
+legend(<span class="string">'alpha = 0.5'</span>, <span class="string">'alpha = 1'</span>, <span class="string">'alpha = 1.5'</span>, <span class="string">'location'</span>, <span class="string">'southeast'</span>);
+title(<span class="string">'Evolu&ccedil;&atilde;o da velocidade sistema - dy(t) com b = 0.025'</span>);
+</pre><img vspace="5" hspace="5" src="Lab2_03.png" alt=""> <img vspace="5" hspace="5" src="Lab2_04.png" alt=""> <img vspace="5" hspace="5" src="Lab2_05.png" alt=""> <img vspace="5" hspace="5" src="Lab2_06.png" alt=""> <img vspace="5" hspace="5" src="Lab2_07.png" alt=""> <p>Na al&iacute;nea 6 foi calculado que o valor de <img src="Lab2_eq14221827199139923399.png" alt="$\alpha$"> que minimizava o T era <img src="Lab2_eq11007464405666851578.png" alt="$\alpha = 1$">. Como se pode observar nas Figuras 2 e 4, o c&aacute;lculo te&oacute;rico confirma-se pois y(t) atinge o valor desejado de 0 mais rapidamente para estas condi&ccedil;&otilde;es. Com o sistema perturbado, verifica-se que este sistema n&atilde;o atinge o valor pretendido.</p><h2 id="8">Sistema de SIMULINK 7</h2><pre class="codeinput">system7
+</pre><img vspace="5" hspace="5" src="Lab2_08.png" alt=""> <h2 id="9">Exerc&iacute;cio 8</h2><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+
+test.y = linspace(-10,10,100);
+test.y_dot = linspace(-10,10,100);
+
+<span class="keyword">for</span> n = 1:length(test.y)
+    <span class="keyword">for</span> m = 1:length(test.y_dot)
+        u(n,m) = blockFunc8(test.y(n), test.y_dot(m));
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment">% curva de comuta&ccedil;ao 2d</span>
+figure(1);
+surfc(test.y, test.y_dot, u);
+view([0 90])
+xlabel(<span class="string">'y'</span>);
+ylabel(<span class="string">'dy'</span>);
+title(<span class="string">' u(y, dy) - Curva de comuta&ccedil;&atilde;o'</span>);
+colorbar
+shading <span class="string">flat</span>;
+
+<span class="comment">%curva de comuta&ccedil;&atilde;o 3d</span>
+figure(2);
+surfc(test.y, test.y_dot, u);
+view([46 51])
+xlabel(<span class="string">'y'</span>);
+ylabel(<span class="string">'dy'</span>);
+zlabel(<span class="string">'u'</span>);
+title(<span class="string">'Gera&ccedil;&atilde;o de u(y, dy)'</span>);
+shading <span class="string">interp</span>;
+colorbar;
+</pre><img vspace="5" hspace="5" src="Lab2_09.png" alt=""> <img vspace="5" hspace="5" src="Lab2_10.png" alt=""> <h2 id="10">Fun&ccedil;&atilde;o blockFun8</h2><pre class="codeinput">type(<span class="string">'blockFunc8.m'</span>);
+</pre><pre class="codeoutput">
+function [u] = blockFunc8(y, y_dot)
+
+in_subsys = -y;
+
+out_subsys = sign(in_subsys)*sqrt(2*abs(in_subsys));
+
+eq =  out_subsys - y_dot;
+
+% SIGN BLOCK
+
+u = sign(eq);
+
+
+end
+
+</pre><p>Nesta estrutura de controlo os nossos impulsos de entrada s&atilde;o definidos em fun&ccedil;&atilde;o da diferen&ccedil;a entre a posi&ccedil;&atilde;o do bra&ccedil;o e a refer&ecirc;ncia dos sistema. Com isto conseguimos ter um maior controlo da posi&ccedil;&atilde;o do bra&ccedil;o para que este se mova para a posi&ccedil;&atilde;o desejada. Temos que a nossa tens&atilde;o de entrada &eacute; influenciada tanto pela posi&ccedil;&atilde;o do nosso bra&ccedil;o como pela derivada da posi&ccedil;&atilde;o do mesmo. Neste sistema de controlo, podemos resumir a defini&ccedil;&atilde;o do sinal do impulso a duas perguntas: A posi&ccedil;&atilde;o est&aacute; acima ou abaixo da refer&ecirc;ncia? A derivada da posi&ccedil;&atilde;o &eacute; positiva ou negativa? Com a resposta a estas perguntas, conseguimos definir o sinal de u de forma a que o bra&ccedil;o se posicione na refer&ecirc;ncia. Podemos usar um exemplo: Imaginando que o nosso y est&aacute; abaixo da nossa refer&ecirc;ncia 0, logo temos y &lt; 0. Ao fazer a diferen&ccedil;a deste n&uacute;mero negativo com 0, passamos a ter um n&uacute;mero positivo &agrave; entrada de Subsys. Logicamente, &agrave; sa&iacute;da de Subsys iremos ter um valor positivo novamente (verificado atrav&eacute;s da substitui&ccedil;&atilde;o de um x positivo em f(x)). At&eacute; agora apenas utiliz&aacute;mos a resposta &agrave; primeira pergunta. Questionamos agora: Ser&aacute; que a derivada da posi&ccedil;&atilde;o &eacute; positiva ou negativa? Imaginemos que estamos perante o caso de uma derivada negativa. Isto quer dizer que para al&eacute;m da posi&ccedil;&atilde;o do nosso bra&ccedil;o se situar abaixo do desejado, este tende a se afastar ainda mais, logo, o que n&oacute;s queremos &eacute; que este fa&ccedil;a precisamente o contr&aacute;rio e fique com uma derivada positiva, para que o valor de y cres&ccedil;a em dire&ccedil;&atilde;o &agrave; refer&ecirc;ncia. Como para este exemplo temos um valor &agrave; sa&iacute;da de Subsys positivo e a nossa derivada tem sinal negativo, a diferen&ccedil;a entre estes dois ir&aacute; dar um valor positivo &agrave; sa&iacute;da do somador. O mesmo acontecer&aacute; &agrave; sa&iacute;da do bloco Sign. Com isto, alter&aacute;mos o declive da varia&ccedil;&atilde;o da posi&ccedil;&atilde;o y. Ap&oacute;s integrar este valor positivo no 1&ordm; bloco integrador, constatamos que iremos ter uma derivada positiva, que era aquilo que n&oacute;s quer&iacute;amos: ter o nosso y, que est&aacute; abaixo da refer&ecirc;ncia, a crescer e a aproximar-se de 0.</p><h2 id="12">Exerc&iacute;cio 9</h2><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+
+<span class="comment">%inicializa&ccedil;&atilde;o de vari&aacute;veis</span>
+K = 10000;
+y0 = 1;
+d_y0 = 0;
+
+sim9 = sim(<span class="string">'system9'</span>);
+
+figure(1)
+plot(sim9.tout, sim9.ut);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(2)
+plot(sim9.tout, sim9.y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(3)
+plot(sim9.tout, sim9.d_y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+<span class="comment">%fazer tra&ccedil;ado de fase da pergunta 5</span>
+figure(4)
+<span class="keyword">for</span> i = -5:2:5
+        y0 = i;
+        d_y0 = i;
+        sim9_i = sim(<span class="string">'system9'</span>);
+        plot(sim9_i.y, sim9_i.d_y);
+        hold <span class="string">on</span>;
+
+<span class="keyword">end</span>
+
+
+figure(1)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'u(t)'</span>)
+title(<span class="string">'Sinal de entrada do sistema - u(t)'</span>);
+
+figure(2)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+title(<span class="string">'Evolu&ccedil;&atilde;o da posi&ccedil;&atilde;o do sistema - y(t)'</span>)
+
+figure(3)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'dy(t)'</span>)
+title(<span class="string">'Evolu&ccedil;&atilde;o da velocidade do sistema - dy(t)'</span>)
+
+figure(4)
+xlabel(<span class="string">'y(t)'</span>)
+ylabel(<span class="string">'dy(t)'</span>)
+leg = legend(<span class="string">'(-5, -5)'</span>, <span class="string">'(-3, -3)'</span>, <span class="string">'(-1, -1)'</span>, <span class="string">'(1, 1)'</span>, <span class="string">'(3, 3)'</span>,<span class="string">'(5, 5)'</span>);
+title(leg, <span class="string">'Pontos iniciais (y,dy)'</span>);
+title(<span class="string">'Tra&ccedil;ado de '</span>)
+</pre><img vspace="5" hspace="5" src="Lab2_11.png" alt=""> <img vspace="5" hspace="5" src="Lab2_12.png" alt=""> <img vspace="5" hspace="5" src="Lab2_13.png" alt=""> <img vspace="5" hspace="5" src="Lab2_14.png" alt=""> <p>Na Figura 1 observamos um ret&acirc;ngulo a partir do momento em que o estado do sistema converge para a origem. Este fen&oacute;meno, chamado <img src="Lab2_eq01893680816183014509.png" alt="$\textit{chattering}$">, ocorre quando se tem oscila&ccedil;&otilde;es com frequ&ecirc;ncia e amplitude finitas, causadas quando se tem din&acirc;micas do sistema a variar muito rapidamente, t&atilde;o r&aacute;pido que o pr&oacute;prio sistema n&atilde;o consegue acompanhar. Este fen&oacute;meno &eacute; prejudicial pois pode causar: pouca precis&atilde;o no sistema, desgaste das partes mec&acirc;nicas em movimento e grandes perdas de calor no circuito.</p><h2 id="14">Sistema de SIMULIK 9</h2><pre class="codeinput">system9
+
+
+<span class="comment">%Dentro do bloco Subsys encontra-se um bloco MATLAB Function com a seguinte</span>
+<span class="comment">%fun&ccedil;&atilde;o:</span>
+
+<span class="comment">% function y  = fcn(x)</span>
+<span class="comment">%</span>
+<span class="comment">%     y = sign(x) * sqrt(2*abs(x));</span>
+<span class="comment">%</span>
+<span class="comment">% end</span>
+</pre><img vspace="5" hspace="5" src="Lab2_15.png" alt=""> <h2 id="15">Exerc&iacute;cio 10</h2><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+y1 = 4;
+
+test.y = linspace(-10,10,100);
+test.y_dot = linspace(-10,10,100);
+
+
+
+<span class="keyword">for</span> n = 1:length(test.y)
+    <span class="keyword">for</span> m = 1:length(test.y_dot)
+        u(n,m) = blockFunc10(test.y(n), test.y_dot(m), y1);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+
+<span class="comment">% curva de comuta&ccedil;ao 2d</span>
+figure(1);
+surfc(test.y, test.y_dot, u);
+view([0 90])
+grid <span class="string">on</span>;
+xlabel(<span class="string">'y'</span>);
+ylabel(<span class="string">'dy'</span>);
+title(<span class="string">' u(y, dy) - Curva de comuta&ccedil;&atilde;o com y_l = 4'</span>);
+shading <span class="string">flat</span>;
+colorbar;
+
+<span class="comment">%curva de comuta&ccedil;ao 3d</span>
+figure(2);
+surfc(test.y, test.y_dot, u);
+view([46 51])
+xlabel(<span class="string">'y'</span>);
+ylabel(<span class="string">'dy'</span>);
+zlabel(<span class="string">'u'</span>);
+title(<span class="string">'Gera&ccedil;&atilde;o de u(y, dy) com y_l = 4'</span>);
+shading <span class="string">interp</span>;
+colorbar;
+</pre><img vspace="5" hspace="5" src="Lab2_16.png" alt=""> <img vspace="5" hspace="5" src="Lab2_17.png" alt=""> <h2 id="16">Fun&ccedil;&atilde;o blockFun10</h2><pre class="codeinput">type(<span class="string">'blockFunc10.m'</span>);
+</pre><pre class="codeoutput">
+function [u] = blockFunc10(y, y_dot, y1)
+
+k1 = 1/y1;
+k2 = sqrt(2*k1);
+
+in_subsys = -y;
+
+if abs(in_subsys) &lt;= y1
+    out_subsys = (k1/k2)*in_subsys;
+else 
+    out_subsys = sign(in_subsys)*(sqrt(2*abs(in_subsys))-(1/k2));
+end
+
+eq =  out_subsys - y_dot;
+
+% SIGN BLOCK
+
+u = sign(eq);
+
+
+end
+</pre><p>Esta arquitectura de controlo garante que quando a posi&ccedil;&atilde;o do bra&ccedil;o se encontra perto da refer&ecirc;ncia a sa&iacute;da do bloco "Subsys" pode assumir valores que n&atilde;o <img src="Lab2_eq01603813172210380278.png" alt="$\pm$"> 1, o que faz com que deixe de haver efeito de <img src="Lab2_eq01893680816183014509.png" alt="$\textit{chattering}$">,como podemos observar na Figura 1, em que entre <img src="Lab2_eq01603813172210380278.png" alt="$\pm$"> y_l a curva de comuta&ccedil;&atilde;o &eacute; linear.</p><h2 id="18">Exerc&iacute;cio 11</h2><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+<span class="comment">%inicializa&ccedil;&atilde;o de vari&aacute;veis</span>
+b = 0;
+
+y1 = 1;
+k1 = 1/y1;
+k2 = sqrt(2*k1);
+y0 = 1;
+d_y0 = 0;
+
+
+sim11 = sim(<span class="string">'system11'</span>);
+
+figure(1)
+plot(sim11.tout, sim11.ut);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(2)
+plot(sim11.tout, sim11.y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(3)
+plot(sim11.tout, sim11.d_y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+<span class="comment">%fazer tra&ccedil;ado de fase da pergunta 5</span>
+figure(4)
+<span class="keyword">for</span> i = -5:2:5
+        y0 = i;
+        d_y0 = i;
+        sim11_i = sim(<span class="string">'system11'</span>);
+        plot(sim11_i.y, sim11_i.d_y);
+        hold <span class="string">on</span>;
+<span class="keyword">end</span>
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">%resposta do sistema linear s&oacute; com a parte de cima do ramo da fun&ccedil;&atilde;o</span>
+sim11_1 = sim(<span class="string">'system11_linear'</span>);
+
+figure(1)
+plot(sim11_1.tout, sim11_1.ut);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(2)
+plot(sim11_1.tout, sim11_1.y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(3)
+plot(sim11_1.tout, sim11_1.d_y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span class="comment">%resposta do sistema em malha fechada sem chattering para compara&ccedil;&atilde;o</span>
+K = 10;      <span class="comment">%reduzimos o ganho face ao utilizado na quest&atilde;o 9 para diminuir um pouco</span>
+<span class="comment">%as oscila&ccedil;&otilde;es de chattering para se poder comparar com o sistema sem chattering de forma mais fidedigna</span>
+y0 = 1;
+d_y0 = 0;
+
+sim9 = sim(<span class="string">'system9'</span>);
+
+figure(1)
+plot(sim9.tout, sim9.ut);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(2)
+plot(sim9.tout, sim9.y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(3)
+plot(sim9.tout, sim9.d_y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+figure(1)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'u(t)'</span>)
+title(<span class="string">'Sinal de entrada do sistema - u(t) com b = 0'</span>);
+legend(<span class="string">'Sistema malha fechada sem chattering'</span>, <span class="string">'Sistema malha fechada sem chattering linear'</span>, <span class="string">'Sistema malha fechada com chattering'</span>, <span class="string">'location'</span>, <span class="string">'southeast'</span>);
+
+figure(2)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+title(<span class="string">'Evolu&ccedil;&atilde;o da posi&ccedil;&atilde;o do sistema - y(t) com b = 0'</span>)
+legend(<span class="string">'Sistema malha fechada sem chattering'</span>, <span class="string">'Sistema malha fechada sem chattering linear'</span>, <span class="string">'Sistema malha fechada com chattering'</span>);
+
+figure(3)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'dy(t)'</span>)
+title(<span class="string">'Evolu&ccedil;&atilde;o da velocidade do sistema - dy(t) com b = 0'</span>)
+legend(<span class="string">'Sistema malha fechada sem chattering'</span>, <span class="string">'Sistema malha fechada sem chattering linear'</span>, <span class="string">'Sistema malha fechada com chattering'</span>);
+
+figure(4)
+xlabel(<span class="string">'y(t)'</span>)
+ylabel(<span class="string">'dy(t)'</span>)
+leg = legend(<span class="string">'(-5, -5)'</span>, <span class="string">'(-3, -3)'</span>, <span class="string">'(-1, -1)'</span>, <span class="string">'(1, 1)'</span>, <span class="string">'(3, 3)'</span>,<span class="string">'(5, 5)'</span>);
+title(leg, <span class="string">'Pontos iniciais (y,dy)'</span>);
+title(<span class="string">'Tra&ccedil;ado de fase do sistema malha fechada sem chattering'</span>)
+</pre><img vspace="5" hspace="5" src="Lab2_18.png" alt=""> <img vspace="5" hspace="5" src="Lab2_19.png" alt=""> <img vspace="5" hspace="5" src="Lab2_20.png" alt=""> <img vspace="5" hspace="5" src="Lab2_21.png" alt=""> <p>Olhando para o sistema de controlo sem <img src="Lab2_eq01893680816183014509.png" alt="$\textit{chattering}$">, verificamos que o sinal de controlo tem uma curva bastante mais suave e j&aacute; nao tem oscila&ccedil;&otilde;es, como seria de esperar. No entanto esta arquitectura tem um trade-off, que &eacute;  facto de o tempo que demora para a posi&ccedil;&atilde;o do bra&ccedil;o tender para o equil&iacute;brio ser consideravelmente maior, pois no nosso exemplo o sistema com <img src="Lab2_eq01893680816183014509.png" alt="$\textit{chattering}$"> estabilizava para t = 2.0211 s, enquanto que o com <img src="Lab2_eq01893680816183014509.png" alt="$\textit{chattering}$"> apenas estabiliza nos 7.5612 s. Podemos tamb&eacute;m observar a resposta do sistema com um controlo linear, alterando a fun&ccedil;&atilde;o <img src="Lab2_eq05690674913985272608.png" alt="$\textit{f(x)}$"> para apenas o ramo superior e retirando o bloco de satura&ccedil;&atilde;o e verificamos que, apesar de o sistema estabilizar &agrave; mesma, apresenta uma maior sobre-eleva&ccedil;&atilde;o no sinal de controlo e uma maior oscila&ccedil;&atilde;o e tempo de estabiliza&ccedil;&atilde;o na posi&ccedil;&atilde;o e na velocidade.</p><h2 id="20">Sistema de SIMULINK 11</h2><pre class="codeinput">system11
+
+
+<span class="comment">%Dentro do bloco Subsys encontra-se um bloco MATLAB Function com a seguinte</span>
+<span class="comment">%fun&ccedil;&atilde;o:</span>
+
+<span class="comment">% function y = fcn(x)</span>
+<span class="comment">% y1 = 1;</span>
+<span class="comment">% k1 = 1/y1;</span>
+<span class="comment">% k2 = sqrt(2*k1);</span>
+<span class="comment">%</span>
+<span class="comment">%     if abs(x) &lt;= y1</span>
+<span class="comment">%         y = (k1/k2)*x;</span>
+<span class="comment">%     elseif abs(x) &gt; y1</span>
+<span class="comment">%         y = sign(x) * (sqrt(2*abs(x))-(1/k2));</span>
+<span class="comment">%     else</span>
+<span class="comment">%         y = 0;</span>
+<span class="comment">%     end</span>
+<span class="comment">%</span>
+<span class="comment">% end</span>
+</pre><img vspace="5" hspace="5" src="Lab2_22.png" alt=""> <h2 id="21">Exerc&iacute;cio 12</h2><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+
+<span class="comment">%inicializar vari&aacute;veis</span>
+b = 0.025;
+
+y1 = 1;
+k1 = 1/y1;
+k2 = sqrt(2*k1);
+y0 = 1;
+d_y0 = 0;
+
+sim12 = sim(<span class="string">'system11'</span>);
+
+figure(1)
+plot(sim12.tout, sim12.ut);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(2)
+plot(sim12.tout, sim12.y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+figure(3)
+plot(sim12.tout, sim12.d_y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+
+<span class="comment">%fazer tra&ccedil;ado de fase da pergunta 5</span>
+figure(4)
+<span class="keyword">for</span> i = -5:2:5
+        y0 = i;
+        d_y0 = i;
+        sim12_i = sim(<span class="string">'system11'</span>);
+        plot(sim12_i.y, sim12_i.d_y);
+        hold <span class="string">on</span>;
+<span class="keyword">end</span>
+
+
+figure(1)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'u(t)'</span>)
+title(<span class="string">'Sinal de entrada do sistema - u(t) com b = 0.025'</span>);
+
+figure(2)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+title(<span class="string">'Evolu&ccedil;&atilde;o da posi&ccedil;&atilde;o do sistema - y(t) com b = 0.025'</span>)
+
+figure(3)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'dy(t)'</span>)
+title(<span class="string">'Evolu&ccedil;&atilde;o da velocidade do sistema - dy(t) com b = 0.025'</span>)
+
+figure(4)
+xlabel(<span class="string">'y(t)'</span>)
+ylabel(<span class="string">'dy(t)'</span>)
+legend(<span class="string">'(-5, -5)'</span>, <span class="string">'(-3, -3)'</span>, <span class="string">'(-1, -1)'</span>, <span class="string">'(1, 1)'</span>, <span class="string">'(3, 3)'</span>,<span class="string">'(5, 5)'</span>);
+title(<span class="string">'Tra&ccedil;ado de fase'</span>)
+</pre><img vspace="5" hspace="5" src="Lab2_23.png" alt=""> <img vspace="5" hspace="5" src="Lab2_24.png" alt=""> <img vspace="5" hspace="5" src="Lab2_25.png" alt=""> <img vspace="5" hspace="5" src="Lab2_26.png" alt=""> <p>Comparando com as simula&ccedil;&otilde;es efectuadas em 7) com b = 0.025, conclu&iacute;mos que o sistema em cadeia fechada &eacute; bastante mais robusto que o de cadeia aberta, pois em cadeia aberta a posi&ccedil;&atilde;o e a velocidade do sistema com atrito nunca chegavam ao ponto de equil&iacute;brio pretendido, enquanto que em cadeia fechada o sistema estabilizava para o equil&iacute;brio.</p><h2 id="23">Exerc&iacute;cio 13</h2><pre class="codeinput">clear
+close <span class="string">all</span>
+clc
+
+<span class="comment">%inicializar vari&aacute;veis</span>
+b = 0;
+
+y1 = 0.1;
+k1 = 1/y1;
+k2 = sqrt(2*k1);
+y0 = 0;
+d_y0 = 0;
+
+<span class="comment">%1&ordf; referencia</span>
+sim13 = sim(<span class="string">'system13'</span>);
+
+figure(1)
+plot(sim13.tout, sim13.y);
+hold <span class="string">on</span>
+grid <span class="string">on</span>
+plot(sim13.tout, sim13.reference);
+
+
+<span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+figure(1)
+xlabel(<span class="string">'Tempo [s]'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+title(<span class="string">'Evolu&ccedil;&atilde;o da posi&ccedil;&atilde;o do sistema'</span>)
+legend(<span class="string">'y(t)'</span>, <span class="string">'Sinal de refer&ecirc;ncia'</span>);
+ylim([-1 5]);
+</pre><img vspace="5" hspace="5" src="Lab2_27.png" alt=""> <h2 id="24">Sistema de SIMULINK 13</h2><pre class="codeinput">system13
+
+<span class="comment">%Dentro do bloco Subsys encontra-se um bloco MATLAB Function com a mesma</span>
+<span class="comment">%fun&ccedil;&atilde;o do sistema de Simulink system11</span>
+</pre><img vspace="5" hspace="5" src="Lab2_28.png" alt=""> <p>Como podemos observar, o sisema de controlo segue as refer&ecirc;ncias n&atilde;o nulas com bastante fidelidade, apesar de ter um pouco de atraso a acompanhar a refer&ecirc;ncia quando esta muda de amplitude bruscamente.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2019a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% LAB 2 - MSIM
+% Autor: Bernardo Rocha & Vasco Araújo
+% Número de Aluno: 89867 & 90817
+% Abril 2020; Última Revisão: 29/04/2020                    
+
+%% Exercício 2
+
+clear
+close all
+clc
+
+t = linspace(-1, 1, 100);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+beta = 0.1;
+
+pb = generatePulse(t, beta);
+
+plot(t, pb)
+hold on
+grid on
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+beta = 0.5;
+
+pb = generatePulse(t, beta);
+
+plot(t, pb)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+beta = 0.9;
+
+pb = generatePulse(t, beta);
+
+plot(t, pb)
+
+
+ylim([0 1.3])
+xlim([-1 1])
+xlabel('Tempo [s]')
+ylabel('Pb(t)')
+legend('Beta = 0.1', 'Beta = 0.5', 'Beta = 0.9')
+title('Geração do impulso protótipo p_\beta(t)')
+
+%% Função generatePulse
+
+type('generatePulse.m');
+
+
+%% Exercício 3
+
+clear
+close all
+clc
+
+%declaração de variáveis
+T = 5;
+alpha = 1;
+U1 = 1;
+U2 = 2;
+n1 = 100;
+n2 = 100;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+beta = 0.1;
+[ut, t] = generateU(T, alpha, beta, U1, U2, n1, n2);
+plot(t, ut);
+hold on
+grid on
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+beta = 0.5;
+[ut, t] = generateU(T, alpha, beta, U1, U2, n1, n2);
+plot(t, ut);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+beta = 0.9;
+[ut, t] = generateU(T, alpha, beta, U1, U2, n1, n2);
+plot(t, ut);
+
+
+ylim([-U1-1 U2+1])
+xlim([0 T])
+xlabel('Tempo [s]')
+ylabel('u(t)')
+legend('Beta = 0.1', 'Beta = 0.5', 'Beta = 0.9')
+title('Geraçáo de u(t) a partir do impulso protótipo p_\beta(t)')
+
+%% Função generateU
+
+type('generateU.m');
+
+%% Exercício 7
+
+clear
+close all
+clc
+
+%inicializar variáveis
+b = 0;
+beta = 1;
+n1 = 100;
+n2 = 100;
+
+
+for alpha = 0.5:0.5:1.5
+
+    if alpha <= 1
+        T = sqrt(2*(1+beta)*(1+alpha)/alpha);
+    else
+        T = sqrt(2*(1+beta)*(1+alpha));
+    end
+    T1 = T/(1+alpha);
+    U1 = 2*(1+beta)/((T1^2)*(1+alpha));
+    U2 = U1/alpha;
+    [ut, t] = generateU(T,alpha,beta,U1,U2,n1,n2);
+    figure(1);
+    plot(t, ut);
+    hold on;
+    grid on;
+    
+    u_entrada.time = t';
+    u_entrada.signals.values = ut';
+    stop_time = T;
+    sim7 = sim('system7');
+    
+    figure(2);
+    plot(sim7.tout, sim7.y_saida);
+    hold on;
+    grid on;
+    
+    figure(3);
+    plot(sim7.tout, sim7.d_y_saida);
+    hold on;
+    grid on;
+    
+    %sistema com b = 0.025
+    b = 0.025;
+    sim7_2 = sim('system7');
+    
+    figure(4);
+    plot(sim7_2.tout, sim7_2.y_saida);
+    hold on;
+    grid on;
+    
+    figure(5);
+    plot(sim7_2.tout, sim7_2.d_y_saida);
+    hold on;
+    grid on;
+    
+    %repor o valor de b
+    b = 0;
+    
+    
+end
+
+
+figure(1)
+xlabel('Tempo [s]')
+ylabel('u(t)')
+legend('alpha = 0.5', 'alpha = 1', 'alpha = 1.5', 'location', 'southeast');
+
+title('Sinal de entrada do sistema - u(t)');
+
+figure(2)
+xlabel('Tempo [s]')
+ylabel('y(t)')
+legend('alpha = 0.5', 'alpha = 1', 'alpha = 1.5');
+title('Evolução da posição do sistema - y(t) com b = 0')
+
+figure(3)
+xlabel('Tempo [s]')
+ylabel('dy(t)')
+legend('alpha = 0.5', 'alpha = 1', 'alpha = 1.5', 'location', 'southeast');
+title('Evolução da velocidade do sistema - dy(t) com b = 0')
+
+figure(4)
+xlabel('Tempo [s]')
+ylabel('y(t)')
+legend('alpha = 0.5', 'alpha = 1', 'alpha = 1.5');
+title('Evolução da posição do sistema - y(t) com b = 0.025');
+
+figure(5)
+xlabel('Tempo [s]')
+ylabel('dy(t)')
+legend('alpha = 0.5', 'alpha = 1', 'alpha = 1.5', 'location', 'southeast');
+title('Evolução da velocidade sistema - dy(t) com b = 0.025');
+
+%%
+% Na alínea 6 foi calculado que o valor de $\alpha$ que minimizava o T era
+% $\alpha = 1$. Como se pode observar nas Figuras 2 e 4, o cálculo teórico
+% confirma-se pois y(t) atinge o valor desejado de 0 mais rapidamente para
+% estas condições.
+% Com o sistema perturbado, verifica-se que este sistema não atinge o valor
+% pretendido.
+%% Sistema de SIMULINK 7
+
+system7
+
+
+%% Exercício 8 
+
+clear
+close all
+clc
+
+
+test.y = linspace(-10,10,100);
+test.y_dot = linspace(-10,10,100);
+
+for n = 1:length(test.y)
+    for m = 1:length(test.y_dot)
+        u(n,m) = blockFunc8(test.y(n), test.y_dot(m));
+    end
+end
+
+% curva de comutaçao 2d
+figure(1);
+surfc(test.y, test.y_dot, u);
+view([0 90])
+xlabel('y');
+ylabel('dy');
+title(' u(y, dy) - Curva de comutação');
+colorbar
+shading flat;
+
+%curva de comutação 3d
+figure(2);
+surfc(test.y, test.y_dot, u);
+view([46 51])
+xlabel('y');
+ylabel('dy');
+zlabel('u');
+title('Geração de u(y, dy)');
+shading interp;
+colorbar;
+
+%% Função blockFun8
+
+type('blockFunc8.m');
+
+%%
+% Nesta estrutura de controlo os nossos impulsos de entrada são definidos em
+% função da diferença entre a posição do braço e a referência dos sistema.
+% Com isto conseguimos ter um maior controlo da posição do braço para que
+% este se mova para a posição desejada.
+% Temos que a nossa tensão de entrada é influenciada tanto pela posição do 
+% nosso braço como pela derivada da posição do mesmo.
+% Neste sistema de controlo, podemos resumir a definição do sinal do impulso
+% a duas perguntas: A posição está acima ou abaixo da referência? 
+% A derivada da posição é positiva ou negativa?
+% Com a resposta a estas perguntas, conseguimos definir o sinal de u de 
+% forma a que o braço se posicione na referência.
+% Podemos usar um exemplo: Imaginando que o nosso y está abaixo da nossa 
+% referência 0, logo temos y < 0. Ao fazer a diferença deste número 
+% negativo com 0, passamos a ter um número positivo à entrada de Subsys. 
+% Logicamente, à saída de Subsys iremos ter um valor positivo novamente 
+% (verificado através da substituição de um x positivo em f(x)).
+% Até agora apenas utilizámos a resposta à primeira pergunta. 
+% Questionamos agora: Será que a derivada da posição é positiva ou negativa? 
+% Imaginemos que estamos perante o caso de uma derivada negativa. Isto quer 
+% dizer que para além da posição do nosso braço se situar abaixo do desejado, 
+% este tende a se afastar ainda mais, logo, o que nós queremos é que este faça 
+% precisamente o contrário e fique com uma derivada positiva, para que o valor 
+% de y cresça em direção à referência.
+% Como para este exemplo temos um valor à saída de Subsys positivo e a nossa 
+% derivada tem sinal negativo, a diferença entre estes dois irá dar um valor 
+% positivo à saída do somador. O mesmo acontecerá à saída do bloco Sign. 
+% Com isto, alterámos o declive da variação da posição y. Após integrar este 
+% valor positivo no 1º bloco integrador, constatamos que iremos ter uma 
+% derivada positiva, que era aquilo que nós queríamos: ter o nosso y, que 
+% está abaixo da referência, a crescer e a aproximar-se de 0.
+
+%% Exercício 9
+
+clear
+close all
+clc
+
+
+%inicialização de variáveis
+K = 10000;
+y0 = 1;
+d_y0 = 0;
+
+sim9 = sim('system9');
+
+figure(1)
+plot(sim9.tout, sim9.ut);
+hold on
+grid on
+
+figure(2)
+plot(sim9.tout, sim9.y);
+hold on
+grid on
+
+figure(3)
+plot(sim9.tout, sim9.d_y);
+hold on
+grid on
+
+%fazer traçado de fase da pergunta 5
+figure(4)
+for i = -5:2:5
+        y0 = i;
+        d_y0 = i;
+        sim9_i = sim('system9');
+        plot(sim9_i.y, sim9_i.d_y);
+        hold on;
+        
+end
+
+
+figure(1)
+xlabel('Tempo [s]')
+ylabel('u(t)')
+title('Sinal de entrada do sistema - u(t)');
+
+figure(2)
+xlabel('Tempo [s]')
+ylabel('y(t)')
+title('Evolução da posição do sistema - y(t)')
+
+figure(3)
+xlabel('Tempo [s]')
+ylabel('dy(t)')
+title('Evolução da velocidade do sistema - dy(t)')
+
+figure(4)
+xlabel('y(t)')
+ylabel('dy(t)')
+leg = legend('(-5, -5)', '(-3, -3)', '(-1, -1)', '(1, 1)', '(3, 3)','(5, 5)');
+title(leg, 'Pontos iniciais (y,dy)');
+title('Traçado de ')
+
+
+%%
+% Na Figura 1 observamos um retângulo a partir do
+% momento em que o estado do sistema converge para a origem. Este fenómeno,
+% chamado $\textit{chattering}$, ocorre quando se tem oscilações com frequência e amplitude
+% finitas, causadas quando se tem dinâmicas do sistema a variar muito
+% rapidamente, tão rápido que o próprio sistema não consegue acompanhar. 
+% Este fenómeno é prejudicial pois pode causar: pouca precisão
+% no sistema, desgaste das partes mecânicas em movimento e grandes
+% perdas de calor no circuito.
+
+%% Sistema de SIMULIK 9
+ 
+system9
+
+
+%Dentro do bloco Subsys encontra-se um bloco MATLAB Function com a seguinte
+%função:
+
+% function y  = fcn(x)
+% 
+%     y = sign(x) * sqrt(2*abs(x));
+% 
+% end
+
+%% Exercício 10
+
+clear
+close all
+clc
+
+y1 = 4;
+
+test.y = linspace(-10,10,100);
+test.y_dot = linspace(-10,10,100);
+
+
+
+for n = 1:length(test.y)
+    for m = 1:length(test.y_dot)
+        u(n,m) = blockFunc10(test.y(n), test.y_dot(m), y1);
+    end
+end
+
+
+% curva de comutaçao 2d
+figure(1);
+surfc(test.y, test.y_dot, u);
+view([0 90])
+grid on;
+xlabel('y');
+ylabel('dy');
+title(' u(y, dy) - Curva de comutação com y_l = 4');
+shading flat;
+colorbar;
+
+%curva de comutaçao 3d
+figure(2);
+surfc(test.y, test.y_dot, u);
+view([46 51])
+xlabel('y');
+ylabel('dy');
+zlabel('u');
+title('Geração de u(y, dy) com y_l = 4');
+shading interp;
+colorbar;
+
+%% Função blockFun10
+
+type('blockFunc10.m');
+
+%%
+% Esta arquitectura de controlo garante que quando a posição do braço se 
+% encontra perto da referência a saída do bloco "Subsys" pode assumir
+% valores que não $\pm$ 1, o que faz com que deixe de haver efeito de
+% $\textit{chattering}$,como podemos observar na Figura 1, em que entre 
+% $\pm$ y_l a curva de comutação é linear.
+
+%% Exercício 11
+
+clear
+close all
+clc
+
+%inicialização de variáveis
+b = 0;
+
+y1 = 1;
+k1 = 1/y1;
+k2 = sqrt(2*k1);
+y0 = 1;
+d_y0 = 0;
+
+
+sim11 = sim('system11');
+
+figure(1)
+plot(sim11.tout, sim11.ut);
+hold on
+grid on
+
+figure(2)
+plot(sim11.tout, sim11.y);
+hold on
+grid on
+
+figure(3)
+plot(sim11.tout, sim11.d_y);
+hold on
+grid on
+
+%fazer traçado de fase da pergunta 5
+figure(4)
+for i = -5:2:5
+        y0 = i;
+        d_y0 = i;
+        sim11_i = sim('system11');
+        plot(sim11_i.y, sim11_i.d_y);
+        hold on;
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%resposta do sistema linear só com a parte de cima do ramo da função
+sim11_1 = sim('system11_linear');
+
+figure(1)
+plot(sim11_1.tout, sim11_1.ut);
+hold on
+grid on
+
+figure(2)
+plot(sim11_1.tout, sim11_1.y);
+hold on
+grid on
+
+figure(3)
+plot(sim11_1.tout, sim11_1.d_y);
+hold on
+grid on
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%resposta do sistema em malha fechada sem chattering para comparação
+K = 10;      %reduzimos o ganho face ao utilizado na questão 9 para diminuir um pouco 
+%as oscilações de chattering para se poder comparar com o sistema sem chattering de forma mais fidedigna
+y0 = 1;
+d_y0 = 0;
+
+sim9 = sim('system9');
+
+figure(1)
+plot(sim9.tout, sim9.ut);
+hold on
+grid on
+
+figure(2)
+plot(sim9.tout, sim9.y);
+hold on
+grid on
+
+figure(3)
+plot(sim9.tout, sim9.d_y);
+hold on
+grid on
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+figure(1)
+xlabel('Tempo [s]')
+ylabel('u(t)')
+title('Sinal de entrada do sistema - u(t) com b = 0');
+legend('Sistema malha fechada sem chattering', 'Sistema malha fechada sem chattering linear', 'Sistema malha fechada com chattering', 'location', 'southeast');
+
+figure(2)
+xlabel('Tempo [s]')
+ylabel('y(t)')
+title('Evolução da posição do sistema - y(t) com b = 0')
+legend('Sistema malha fechada sem chattering', 'Sistema malha fechada sem chattering linear', 'Sistema malha fechada com chattering');
+
+figure(3)
+xlabel('Tempo [s]')
+ylabel('dy(t)')
+title('Evolução da velocidade do sistema - dy(t) com b = 0')
+legend('Sistema malha fechada sem chattering', 'Sistema malha fechada sem chattering linear', 'Sistema malha fechada com chattering');
+
+figure(4)
+xlabel('y(t)')
+ylabel('dy(t)')
+leg = legend('(-5, -5)', '(-3, -3)', '(-1, -1)', '(1, 1)', '(3, 3)','(5, 5)');
+title(leg, 'Pontos iniciais (y,dy)');
+title('Traçado de fase do sistema malha fechada sem chattering')
+
+
+%%
+% Olhando para o sistema de controlo sem $\textit{chattering}$,
+% verificamos que o sinal de controlo tem uma curva bastante mais suave e
+% já nao tem oscilações, como seria de esperar. No entanto esta arquitectura
+% tem um trade-off, que é  facto de o tempo que demora para a posição do
+% braço tender para o equilíbrio ser consideravelmente maior, pois no nosso
+% exemplo o sistema com $\textit{chattering}$ estabilizava para t = 2.0211
+% s, enquanto que o com $\textit{chattering}$ apenas estabiliza nos 7.5612
+% s.
+% Podemos também observar a resposta do sistema com um controlo linear,
+% alterando a função $\textit{f(x)}$ para apenas o ramo superior e retirando
+% o bloco de saturação e verificamos que, apesar de o sistema estabilizar à
+% mesma, apresenta uma maior sobre-elevação no sinal de controlo e uma maior 
+% oscilação e tempo de estabilização na posição e na velocidade.
+
+
+
+%% Sistema de SIMULINK 11
+
+system11
+
+
+%Dentro do bloco Subsys encontra-se um bloco MATLAB Function com a seguinte
+%função:
+
+% function y = fcn(x)
+% y1 = 1;
+% k1 = 1/y1;
+% k2 = sqrt(2*k1);
+%     
+%     if abs(x) <= y1
+%         y = (k1/k2)*x;
+%     elseif abs(x) > y1    
+%         y = sign(x) * (sqrt(2*abs(x))-(1/k2));
+%     else
+%         y = 0;
+%     end
+% 
+% end
+
+%% Exercício 12
+
+clear
+close all
+clc
+
+
+%inicializar variáveis
+b = 0.025;
+
+y1 = 1;
+k1 = 1/y1;
+k2 = sqrt(2*k1);
+y0 = 1;
+d_y0 = 0;
+
+sim12 = sim('system11');
+
+figure(1)
+plot(sim12.tout, sim12.ut);
+hold on
+grid on
+
+figure(2)
+plot(sim12.tout, sim12.y);
+hold on
+grid on
+
+figure(3)
+plot(sim12.tout, sim12.d_y);
+hold on
+grid on
+
+%fazer traçado de fase da pergunta 5
+figure(4)
+for i = -5:2:5
+        y0 = i;
+        d_y0 = i;
+        sim12_i = sim('system11');
+        plot(sim12_i.y, sim12_i.d_y);
+        hold on;
+end
+
+
+figure(1)
+xlabel('Tempo [s]')
+ylabel('u(t)')
+title('Sinal de entrada do sistema - u(t) com b = 0.025');
+
+figure(2)
+xlabel('Tempo [s]')
+ylabel('y(t)')
+title('Evolução da posição do sistema - y(t) com b = 0.025')
+
+figure(3)
+xlabel('Tempo [s]')
+ylabel('dy(t)')
+title('Evolução da velocidade do sistema - dy(t) com b = 0.025')
+
+figure(4)
+xlabel('y(t)')
+ylabel('dy(t)')
+legend('(-5, -5)', '(-3, -3)', '(-1, -1)', '(1, 1)', '(3, 3)','(5, 5)');
+title('Traçado de fase')
+
+%%
+% Comparando com as simulações efectuadas em 7) com b = 0.025, concluímos
+% que o sistema em cadeia fechada é bastante mais robusto que o de cadeia
+% aberta, pois em cadeia aberta a posição e a velocidade do sistema com
+% atrito nunca chegavam ao ponto de equilíbrio pretendido, enquanto que
+% em cadeia fechada o sistema estabilizava para o equilíbrio.
+
+%% Exercício 13
+
+clear
+close all
+clc
+
+%inicializar variáveis
+b = 0;
+
+y1 = 0.1;
+k1 = 1/y1;
+k2 = sqrt(2*k1);
+y0 = 0;
+d_y0 = 0;
+
+%1ª referencia
+sim13 = sim('system13');
+
+figure(1)
+plot(sim13.tout, sim13.y);
+hold on
+grid on
+plot(sim13.tout, sim13.reference);
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+figure(1)
+xlabel('Tempo [s]')
+ylabel('y(t)')
+title('Evolução da posição do sistema')
+legend('y(t)', 'Sinal de referência');
+ylim([-1 5]);
+
+
+%% Sistema de SIMULINK 13
+
+system13
+
+%Dentro do bloco Subsys encontra-se um bloco MATLAB Function com a mesma
+%função do sistema de Simulink system11
+
+%%
+% Como podemos observar, o sisema de controlo segue as referências não
+% nulas com bastante fidelidade, apesar de ter um pouco de atraso a
+% acompanhar a referência quando esta muda de amplitude bruscamente.
+
+##### SOURCE END #####
+--></body></html>
